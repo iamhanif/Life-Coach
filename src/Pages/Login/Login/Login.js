@@ -17,23 +17,20 @@ const Login = () => {
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input type="email" placeholder="email" className="input input-bordered" />
+                        <input type="email" name='email' placeholder="email" className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Password</span>
                         </label>
-                        <input type="password" placeholder="password" className="input input-bordered" />
-                        <label className="label">
-                            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                        </label>
+                        <input type="password" name='password' placeholder="password" className="input input-bordered" required />
                     </div>
                     <div className="form-control mt-6">
                         <input className="btn btn-outline btn-primary" type="submit" value="Login" />
 
                     </div>
                 </form>
-                <p className='text-center mb-12'>First time at Life Coach ? <Link className='text-orange-600 font-bold' to='/signup'>Sign Up</Link></p>
+                <p className='text-center mb-12'>First time at Life Coach ? <Link className='text-orange-600 font-bold' to='/register'>Register</Link></p>
             </div>
         </div>
     );
