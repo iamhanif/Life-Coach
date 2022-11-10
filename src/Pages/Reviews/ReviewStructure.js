@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const ReviewStructure = ({ singleReview, handleDelete }) => {
-    const { title, _id, name, photoURL, email, reviewMessage } = singleReview
+    const { title, _id, name, reviewMessage } = singleReview
 
+    const { user } = useContext(AuthContext)
 
 
     return (
@@ -16,7 +18,13 @@ const ReviewStructure = ({ singleReview, handleDelete }) => {
                 <div className="flex items-center space-x-3">
                     <div className="avatar">
                         <div className="mask mask-squircle w-12 h-12">
-                            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="user image" />
+                            {
+                                user?.photoURL ?
+                                    <img src={photoURL} alt="photo" />
+                                    :
+                                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="user image" />
+                            }
+
                         </div>
                     </div>
                     <div>
