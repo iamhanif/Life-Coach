@@ -7,7 +7,7 @@ const Reviews = () => {
     const [review, setReview] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/programs?email=${user?.email}`)
+        fetch(`https://life-coach-server.vercel.app/programs?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setReview(data))
     }, [user?.email])
@@ -15,7 +15,7 @@ const Reviews = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Want the remove your review ?')
         if (proceed) {
-            fetch(`http://localhost:5000/programs/${id}`, {
+            fetch(`https://life-coach-server.vercel.app/programs/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json()
@@ -31,7 +31,7 @@ const Reviews = () => {
     }
 
     const handleStatusUpdate = id => {
-        fetch(`http://localhost:5000/programs/${id}`, {
+        fetch(`https://life-coach-server.vercel.app/programs/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

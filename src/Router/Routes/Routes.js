@@ -35,7 +35,7 @@ const router = createBrowserRouter([
             {
                 path: '/addService',
                 element: <PrivateRoute><AddService /></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+                loader: ({ params }) => fetch(`https://life-coach-server.vercel.app/services/${params.id}`)
             },
             {
                 path: '/reviews',
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
             {
                 path: '/programs/:id',
                 element: <Programs />,
-                loader: ({ params }) => fetch(`http://localhost:5000/programs/${params.id}`)
+                loader: ({ params }) => fetch(`https://life-coach-server.vercel.app/programs/${params.id}`)
             }
         ]
 

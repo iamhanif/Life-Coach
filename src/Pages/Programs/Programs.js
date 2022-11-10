@@ -28,7 +28,7 @@ const Programs = () => {
             reviewMessage
         }
 
-        fetch('http://localhost:5000/programs', {
+        fetch('https://life-coach-server.vercel.app/programs', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
