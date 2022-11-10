@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
-const ReviewStructure = ({ singleReview, handleDelete }) => {
-    const { title, _id, name, photoURL, reviewMessage } = singleReview
+const ReviewStructure = ({ singleReview, handleDelete, handleStatusUpdate }) => {
+    const { title, _id, name, photoURL, reviewMessage, status } = singleReview
 
     const { user } = useContext(AuthContext)
 
@@ -37,7 +37,7 @@ const ReviewStructure = ({ singleReview, handleDelete }) => {
             </td>
             <td>{reviewMessage}</td>
             <th>
-                <button className="btn btn-ghost btn-xs">details</button>
+                <button onClick={() => handleStatusUpdate(_id)} className="btn btn-ghost btn-xs">{status ? status : 'Edit'}</button>
             </th>
         </tr>
     );

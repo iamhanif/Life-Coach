@@ -19,10 +19,10 @@ const Header = () => {
             user?.email ?
                 <>
                     <li>
-                        <Link to='/reviews'>Reviews</Link>
+                        <Link to='/reviews'>My Reviews</Link>
                     </li>
                     <li>
-                        <Link to='/blogs'>Blog</Link>
+                        <Link to='/addService'>Add Service</Link>
                     </li>
                 </>
                 :

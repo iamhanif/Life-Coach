@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { json, useLoaderData } from 'react-router-dom';
+import { Link, Navigate, Redirect, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import Reviews from '../Reviews/Reviews';
 
@@ -9,6 +9,10 @@ const Programs = () => {
 
     const handleReview = event => {
         event.preventDefault()
+        if (!user) {
+            alert('Please login')
+        }
+
         const form = event.target
         const name = form.name.value
         const email = user?.email || 'unregistered'
