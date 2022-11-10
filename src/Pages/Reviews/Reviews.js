@@ -5,6 +5,7 @@ import ReviewStructure from './ReviewStructure';
 const Reviews = () => {
     const { user } = useContext(AuthContext)
     const [review, setReview] = useState([])
+    console.log(review);
 
     useEffect(() => {
         fetch(`http://localhost:5000/programs?email=${user?.email}`)
@@ -15,7 +16,7 @@ const Reviews = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Want the remove your review ?')
         if (proceed) {
-            fetch(`http://localhost:5000/programs/$(id)`, {
+            fetch(`http://localhost:5000/programs/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json()
