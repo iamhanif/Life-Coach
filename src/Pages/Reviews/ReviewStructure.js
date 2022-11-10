@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const ReviewStructure = ({ singleReview, handleDelete }) => {
-    const { title, _id, name, reviewMessage } = singleReview
+    const { title, _id, name, photoURL, reviewMessage } = singleReview
 
     const { user } = useContext(AuthContext)
 
