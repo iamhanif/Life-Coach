@@ -17,7 +17,11 @@ const Reviews = () => {
             <table className="table w-full">
                 <thead>
                     <tr>
-
+                        <th>
+                            <label>
+                                <input type="checkbox" className="checkbox" />
+                            </label>
+                        </th>
                         <th>Name</th>
                         <th>Program</th>
                         <th>Review</th>

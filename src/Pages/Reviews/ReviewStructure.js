@@ -1,16 +1,33 @@
 import React from 'react';
 
 const ReviewStructure = ({ singleReview }) => {
-    const { title, name, photoURL, email, reviewMessage } = singleReview
+    const { title, _id, name, photoURL, email, reviewMessage } = singleReview
+
+    const handleDelete = id => {
+        const proceed = window.confirm('Want the remove your review ?')
+        if (proceed) {
+            fetch(`http://localhost:5000/programs/$(id)`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json()
+                    .then(data => {
+                        console.log(data)
+                    }))
+        }
+    }
 
     return (
         <tr>
-
+            <th>
+                <label>
+                    <button onClick={() => handleDelete(_id)} className='btn btn-warning'>X</button>
+                </label>
+            </th>
             <td>
                 <div className="flex items-center space-x-3">
                     <div className="avatar">
                         <div className="mask mask-squircle w-12 h-12">
-                            <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+                            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="user image" />
                         </div>
                     </div>
                     <div>
