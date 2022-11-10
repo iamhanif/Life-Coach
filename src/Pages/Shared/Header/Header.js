@@ -4,7 +4,12 @@ import logo from '../../../assets/logo/logo.png'
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
 
     const menubar = <>
         <li>
@@ -50,7 +55,13 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/login' className="btn btn-outline btn-success">Login</Link>
+
+                {
+                    user?.email ?
+                        <button className='btn btn-outline btn-primary' onClick={handleLogOut}>Log out </button>
+                        :
+                        <Link to='/login' className="btn btn-outline btn-success">Login</Link>
+                }
             </div>
         </div>
     );

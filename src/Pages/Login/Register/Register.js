@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
+import { GoogleAuthProvider } from 'firebase/auth';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
 
-    const { createUser } = useContext(AuthContext)
+    const { createUser, providerLogin } = useContext(AuthContext)
 
     const handleRegister = (event) => {
         event.preventDefault()
@@ -20,13 +21,24 @@ const Register = () => {
             .catch(error => console.error(error))
     }
 
+    const googleProvider = new GoogleAuthProvider()
+
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+            .then(result => {
+                const user = result.user
+                console.log(user)
+            })
+            .catch(e => console.error(e))
+    }
+
     return (
         <div>
             <div className="hero w-50 my-4">
 
                 <div className="card w-full max-w-sm shadow-2xl bg-base-100">
                     <h1 className="text-5xl text-center font-bold font-mono pt-3">Register</h1>
-                    <form onSubmit={handleRegister} className="card-body mb-3">
+                    <form onSubmit={handleRegister} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Name</span>
@@ -49,8 +61,12 @@ const Register = () => {
                             <input className="btn btn-outline btn-primary" type="submit" value="Register" />
 
                         </div>
+                        <div className='text-center'>
+                            <p>or</p>
+                            <button onClick={handleGoogleSignIn} className='me-3 mt-3 btn btn-outline btn-primary'> Sign in with Google </button>
+                        </div>
                     </form>
-                    <p className='text-center mb-12'>Already have an account ? <Link className='text-orange-600 font-bold' to='/login'>Login</Link></p>
+                    <p className='text-center mb-5'>Already have an account ? <Link className='text-orange-600 font-bold' to='/login'>Login</Link></p>
                 </div>
             </div>
         </div>
