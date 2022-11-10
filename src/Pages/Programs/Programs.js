@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { json, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+import Reviews from '../Reviews/Reviews';
 
 const Programs = () => {
     const { _id, title, img, description, price } = useLoaderData()
@@ -62,6 +63,7 @@ const Programs = () => {
                 <input className='btn btn-outline btn-accent mb-4' type="submit" value="Post Your Review" />
 
             </form>
+            <Reviews />
         </div>
     );
 };

@@ -1,20 +1,9 @@
 import React from 'react';
 
-const ReviewStructure = ({ singleReview }) => {
+const ReviewStructure = ({ singleReview, handleDelete }) => {
     const { title, _id, name, photoURL, email, reviewMessage } = singleReview
 
-    const handleDelete = id => {
-        const proceed = window.confirm('Want the remove your review ?')
-        if (proceed) {
-            fetch(`http://localhost:5000/programs/$(id)`, {
-                method: 'DELETE'
-            })
-                .then(res => res.json()
-                    .then(data => {
-                        console.log(data)
-                    }))
-        }
-    }
+
 
     return (
         <tr>

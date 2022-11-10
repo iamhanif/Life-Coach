@@ -12,6 +12,24 @@ const Reviews = () => {
             .then(data => setReview(data))
     }, [user?.email])
 
+    const handleDelete = id => {
+        const proceed = window.confirm('Want the remove your review ?')
+        if (proceed) {
+            fetch(`http://localhost:5000/programs/$(id)`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json()
+                    .then(data => {
+                        console.log(data)
+                        if (data.deletedCount > 0) {
+                            alert('Removed Successfully')
+                            const remaining = review.filter(rev => rev._id !== id)
+                            setReview(remaining)
+                        }
+                    }))
+        }
+    }
+
     return (
         <div className="overflow-x-auto w-full">
             <table className="table w-full">
@@ -33,6 +51,7 @@ const Reviews = () => {
                         review.map(singleReview => <ReviewStructure
                             key={singleReview._id}
                             singleReview={singleReview}
+                            handleDelete={handleDelete}
                         ></ReviewStructure>)
                     }
                 </tbody>

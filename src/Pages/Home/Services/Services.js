@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Reviews from '../../Reviews/Reviews';
 import ServiceCard from './ServiceCard';
 
 const Services = () => {
@@ -24,6 +25,8 @@ const Services = () => {
                     ></ServiceCard>)
                 }
             </div>
+            <h2 className='text-2xl font-semibold text-lime-700 my-3'>Reviews on individual program</h2>
+            <Reviews />
         </div>
     );
 };
